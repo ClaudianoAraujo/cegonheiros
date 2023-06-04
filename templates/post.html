@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block content %}
+
+    <div class="col-lg-8">
+
+        <div class="card mb-4 bg-dark">
+            <div class="card-header text-white">Search</div>
+            <div class="card-body">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                    <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-8">
+
+            <!-- Post content-->
+            <article class="text-white">
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{pesquisa.title}}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">Postado em {{pesquisa.data}}</div>
+                    <!-- Post categories-->
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Transporte</a>
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Cegonha</a>
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded" src="{{pesquisa.img}}" alt="Cehonheiros" /></figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    {% if pesquisa.sbtitle %}
+                        <h2 class="fw-bolder mb-4 mt-5">{{pesquisa.sbtitle}}</h2>
+                    {% endif %}
+                    <p class="fs-5 mb-4">{{pesquisa.content}}</p>
+                </section>
+            </article>
+
+    </div>
+
+{% endblock %}
