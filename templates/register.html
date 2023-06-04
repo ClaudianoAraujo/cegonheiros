@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% block title %}CRIE SEU CADASTRO{% endblock %}
+{% block content %} 
+
+
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card bg-dark shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Crie Seu Cadastro</h3></div>
+                            <div class="card-body">
+                                <form action="/create/" method="POST">
+                                    {% csrf_token %}
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input class="form-control" id="inputFirstName" type="text" name="username" placeholder="Enter your first name" />
+                                                <label for="inputFirstName">Primeiro Nome</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input class="form-control" id="inputLastName" type="text" name="lastname" placeholder="Enter your last name" />
+                                                <label for="inputLastName">Ultimo Nome</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="inputEmail" type="email" name="email" placeholder="name@example.com" />
+                                        <label for="inputEmail">Seu E-mail</label>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Create a password" />
+                                                <label for="inputPassword">senha</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input class="form-control" id="inputPasswordConfirm" type="password" name="password-conf" placeholder="Confirm password" />
+                                                <label for="inputPasswordConfirm">Confirme senha</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid"><button type="submit" class="btn btn-primary">Salvar</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <div class="small"><a href="">Já tem conta? login</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script async="async" data-cfasync="false" src="//cobwebcomprehension.com/31204a990e9a1021adbff124c27485c9/invoke.js"></script>
+            <div id="container-31204a990e9a1021adbff124c27485c9"></div>
+
+
+
+{% endblock  %}

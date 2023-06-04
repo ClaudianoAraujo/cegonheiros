@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="col-lg-6 shadow p-4">
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit" class="btn btn-primary">
+
+</form>
+</div>
+
+{% endblock %}
