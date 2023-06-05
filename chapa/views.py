@@ -31,6 +31,7 @@ def register(request):
     return render(request, 'register.html')
 
 @login_required
+@csrf_protect
 def profile(request, id):
     resp1 = User.objects.get(pk=id)
     resp = {'resp':resp1}
