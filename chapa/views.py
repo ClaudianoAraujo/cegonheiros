@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import BlogPost
 from django.contrib.auth.models import User
 from chapa.models import Chapa
@@ -26,7 +26,7 @@ def detalhe(request,):
     
     return render(request, 'detalhe.html', context)
 
-
+@csrf_protect
 def register(request):
     return render(request, 'register.html')
 
@@ -47,7 +47,7 @@ def create(request):
         return redirect('formlogin')
     
     
-    
+@csrf_protect  
 def formes(request):
     form = ChapaForm()
     if request.method == 'POST':
@@ -58,23 +58,25 @@ def formes(request):
     context = {'form':form}
     return render(request, 'form.html', context)
 
+@login_required
+@csrf_protect
 def create_chapa(request):
-    form = CreateChapaForm()
-    if request.method == 'POST':
-        form = CreateChapaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            
+    form = CreateChapaForm(request.POST)
+    if form.is_valid():
+        form.save()
+        info = request.POST['username']
+        return redirect('profile', info)
+               
     context = {'form':form}   
     return render(request, 'form.html', context)
 
 
-
+@csrf_protect
 def formlogin(request):
     return render(request, 'login.html')
 
 
-@csrf_protect
+
 def dologin(request):
     user = authenticate(username=request.POST['user'], password=request.POST['password'])
     if user is not None:

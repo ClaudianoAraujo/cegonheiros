@@ -28,7 +28,7 @@ class CreateChapaForm(forms.ModelForm):
     class Meta:
         model = Chapa
         fields = (
-            'usuario',
+            'username',
             'estado',
             'cidade',
             'img',
@@ -38,7 +38,7 @@ class CreateChapaForm(forms.ModelForm):
         )
         
         widgets = {
-            'usuario':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Usuario'}),
+            'username':forms.Select(attrs={'class':'form-control', 'placeholder':'Usuario'}),
             'estado':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Estado'}),
             'cidade':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cidade'}),
             'img':forms.URLInput(attrs={'class':'form-control', 'placeholder':'Url'}),

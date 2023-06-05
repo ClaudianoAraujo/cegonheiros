@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-m%k7rs^c5vxm1s@$ew4j#gsfr4m!(@*k_wg6hmq+779#pof-2!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*', 'chapa.shop']
 
@@ -123,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = 'static/'
+LOGIN_URL = '/formlogin/'
+LOGIN_REDIRECT_URL = '/profile/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
