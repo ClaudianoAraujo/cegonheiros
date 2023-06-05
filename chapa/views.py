@@ -37,7 +37,7 @@ def profile(request, id):
     return render(request, 'profile.html', resp)
 
 
-
+@csrf_protect
 def create(request):
     if request.method == "POST" and  (request.POST['password'] == request.POST['password-conf']):
         user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
@@ -76,7 +76,7 @@ def formlogin(request):
     return render(request, 'login.html')
 
 
-
+@csrf_protect
 def dologin(request):
     user = authenticate(username=request.POST['user'], password=request.POST['password'])
     if user is not None:
