@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from chapa.models import Chapa
 from .forms import ChapaForm, CreateChapaForm
 from django.contrib.auth import authenticate, login
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt, requires_csrf_token
 from django.contrib.auth.decorators import login_required
 
 
@@ -26,19 +26,18 @@ def detalhe(request,):
     
     return render(request, 'detalhe.html', context)
 
-@csrf_protect
+
 def register(request):
     return render(request, 'register.html')
 
 @login_required
-@csrf_protect
 def profile(request, id):
     resp1 = User.objects.get(pk=id)
     resp = {'resp':resp1}
     return render(request, 'profile.html', resp)
 
 
-@csrf_protect
+@requires_csrf_token
 def create(request):
     if request.method == "POST" and  (request.POST['password'] == request.POST['password-conf']):
         user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
@@ -48,7 +47,7 @@ def create(request):
         return redirect('formlogin')
     
     
-@csrf_protect  
+@requires_csrf_token 
 def formes(request):
     form = ChapaForm()
     if request.method == 'POST':
@@ -60,7 +59,7 @@ def formes(request):
     return render(request, 'form.html', context)
 
 @login_required
-@csrf_protect
+@requires_csrf_token
 def create_chapa(request):
     form = CreateChapaForm(request.POST)
     if form.is_valid():
@@ -72,12 +71,12 @@ def create_chapa(request):
     return render(request, 'form.html', context)
 
 
-@csrf_protect
+
 def formlogin(request):
     return render(request, 'login.html')
 
 
-@csrf_protect
+@requires_csrf_token
 def dologin(request):
     user = authenticate(username=request.POST['user'], password=request.POST['password'])
     if user is not None:
