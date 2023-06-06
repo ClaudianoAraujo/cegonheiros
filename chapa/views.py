@@ -26,7 +26,7 @@ def detalhe(request,):
     
     return render(request, 'detalhe.html', context)
 
-
+@csrf_exempt
 def register(request):
     return render(request, 'register.html')
 
@@ -37,7 +37,7 @@ def profile(request, id):
     return render(request, 'profile.html', resp)
 
 
-@requires_csrf_token
+@csrf_protect
 def create(request):
     if request.method == "POST" and  (request.POST['password'] == request.POST['password-conf']):
         user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
@@ -47,19 +47,18 @@ def create(request):
         return redirect('formlogin')
     
     
-@requires_csrf_token 
+@csrf_protect
 def formes(request):
-    form = ChapaForm()
-    if request.method == 'POST':
-        form = ChapaForm(request.POST)
-        if form.is_valid():
-            form.save()
+    form = ChapaForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('login2')
             
     context = {'form':form}
     return render(request, 'form.html', context)
 
-@login_required
-@requires_csrf_token
+
+@csrf_protect
 def create_chapa(request):
     form = CreateChapaForm(request.POST)
     if form.is_valid():
@@ -71,12 +70,12 @@ def create_chapa(request):
     return render(request, 'form.html', context)
 
 
-
+@csrf_protect
 def formlogin(request):
     return render(request, 'login.html')
 
 
-@requires_csrf_token
+@csrf_protect
 def dologin(request):
     user = authenticate(username=request.POST['user'], password=request.POST['password'])
     if user is not None:
