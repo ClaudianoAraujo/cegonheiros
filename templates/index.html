@@ -1,17 +1,19 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Site voltado ao transporte rodoviario de veiculos" />
+        <meta name="robots" content="index, follow">
+        <meta name="keywords" content="transporte rodoviário de cargas, motoristas de caminhão, vagas de emprego, oportunidades de trabalho logística, eficiência logística, transporte de mercadorias">
+        <meta name="description" content="Aprenda as melhores práticas e dicas para o transporte rodoviário de cargas. Nossos especialistas compartilham insights valiosos para otimizar sua logística e aumentar a eficiência. Saiba mais! Confira as últimas vagas de emprego no setor de transporte rodoviário de cargas.">
         <meta name="author" content="Claudiano Araujo" />
         {% load bootstrap5 %}
         {% load bootstrap %}
         {% bootstrap_css %}
         {% bootstrap_javascript %}
-        <title>Cegonheiros</title>
-        <link rel="icon" type="image/x-icon" href="https://img.icons8.com/flat-round/64/000000/stork.png" alt="stork"/>
+        <title>{% block meta %}{{res.title}} | Cegonheiros{% endblock  %}</title>
+        <link rel="icon" type="image/x-icon" href="https://img.icons8.com/flat-round/64/000000/stork.png" alt="Caminhão"/>
     </head>
 
     <body class="bg-dark">
