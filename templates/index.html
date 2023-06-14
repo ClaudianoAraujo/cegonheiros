@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
@@ -67,7 +67,7 @@
                         <div class="card-body">
                             <div class="small text-muted">{{res.data}}</div>
                             <h2 class="card-title">{{res.title}}</h2>
-                            <p class="card-text">{{res.content}}</p>
+                            <p class="card-text"></p>
                             <a class="btn btn-primary" href="{% url 'post' res.id %}">Leia mais →</a>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                                     <div class="small text-muted">{{pes.data}}</div>
                                     <h2 class="card-title h4">{{pes.title}}</h2>
                                     <p class="card-text">Author: {{pes.author}}</p>
-                                    <a class="btn btn-primary" href="{% url 'post' pes.id %}">Read more →</a>
+                                    <a class="btn btn-primary" href="{% url 'post' pes.id %}">Leia mais →</a>
                                 </div>
                             </div>
                         </div>

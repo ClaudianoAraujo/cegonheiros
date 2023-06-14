@@ -29,21 +29,25 @@ class CreateChapaForm(forms.ModelForm):
         model = Chapa
         fields = (
             'username',
+            'name_chapa',
             'estado',
             'cidade',
             'img',
-            'descricao',
             'cel',
+            'descricao',
+            
 
         )
         
         widgets = {
             'username':forms.Select(attrs={'class':'form-control', 'placeholder':'Usuario'}),
+            'name_chapa':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nome Do Chapa'}),
             'estado':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Estado'}),
             'cidade':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cidade'}),
             'img':forms.URLInput(attrs={'class':'form-control', 'placeholder':'Url'}),
-            'descricao':forms.Textarea(attrs={'class':'form-control'}),
             'cel':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Numero de WhatsApp'}),
+            'descricao':forms.Textarea(attrs={'class':'form-control'}),
+            
 
         }
         

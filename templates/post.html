@@ -5,17 +5,21 @@
     <div class="col-lg-8">
 
         <div class="card mb-4 bg-dark">
-            <div class="card-header text-white">Search</div>
+            <div class="card-header text-white">Buscar</div>
             <div class="card-body">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                    <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    <form class="input-group" action="{% url 'buscar' %}" method="post">
+                        {% csrf_token %}
+                    <input class="form-control" type="text" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="button-search" name="param" />
+                    <button class="btn btn-primary" id="button-search" type="submit">ir!</button>
+                    </form>
                 </div>
             </div>
         </div>
 
     </div>
 
+    {% for pesquisa in pesquisa %}
     <div class="col-lg-8">
 
             <!-- Post content-->
@@ -37,45 +41,15 @@
                     {% if pesquisa.sbtitle %}
                         <h2 class="fw-bolder mb-4 mt-5">{{pesquisa.sbtitle}}</h2>
                     {% endif %}
-                    <!-- Ezoic - mid_content - mid_content -->
-                    <div id="ezoic-pub-ad-placeholder-103"> </div>
-                    <!-- End Ezoic - mid_content - mid_content -->
+
                     <p class="fs-5 mb-4">{{pesquisa.content}}</p>
-                    <!-- Ezoic - mid_content - mid_content -->
-                    <div id="ezoic-pub-ad-placeholder-103"> </div>
-                    <!-- End Ezoic - mid_content - mid_content -->
-                                        <!-- Ezoic - mid_content - mid_content -->
-                                        <div id="ezoic-pub-ad-placeholder-103"> </div>
-                                        <!-- End Ezoic - mid_content - mid_content -->
-                                                            <!-- Ezoic - mid_content - mid_content -->
-                    <div id="ezoic-pub-ad-placeholder-103"> </div>
-                    <!-- End Ezoic - mid_content - mid_content -->
-                                        <!-- Ezoic - mid_content - mid_content -->
-                                        <div id="ezoic-pub-ad-placeholder-103"> </div>
-                                        <!-- End Ezoic - mid_content - mid_content -->
-                                                            <!-- Ezoic - mid_content - mid_content -->
-                    <div id="ezoic-pub-ad-placeholder-103"> </div>
-                    <!-- End Ezoic - mid_content - mid_content -->
-                                        <!-- Ezoic - mid_content - mid_content -->
-                                        <div id="ezoic-pub-ad-placeholder-103"> </div>
-                                        <!-- End Ezoic - mid_content - mid_content -->
-                                                            <!-- Ezoic - mid_content - mid_content -->
-                    <div id="ezoic-pub-ad-placeholder-103"> </div>
-                    <!-- End Ezoic - mid_content - mid_content -->
-                                        <!-- Ezoic - mid_content - mid_content -->
-                                        <div id="ezoic-pub-ad-placeholder-103"> </div>
-                                        <!-- End Ezoic - mid_content - mid_content -->
-                                                            <!-- Ezoic - mid_content - mid_content -->
-                    <div id="ezoic-pub-ad-placeholder-103"> </div>
-                    <!-- End Ezoic - mid_content - mid_content -->
-                                        <!-- Ezoic - mid_content - mid_content -->
-                                        <div id="ezoic-pub-ad-placeholder-103"> </div>
-                                        <!-- End Ezoic - mid_content - mid_content -->
+
                 </section>
             </article>
-            <script async="async" data-cfasync="false" src="//cobwebcomprehension.com/31204a990e9a1021adbff124c27485c9/invoke.js"></script>
-            <div id="container-31204a990e9a1021adbff124c27485c9"></div>
 
     </div>
+    {% endfor %}
+    <script async="async" data-cfasync="false" src="//cobwebcomprehension.com/31204a990e9a1021adbff124c27485c9/invoke.js"></script>
+    <div id="container-31204a990e9a1021adbff124c27485c9"></div>
 
 {% endblock %}

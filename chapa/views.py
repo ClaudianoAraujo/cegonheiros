@@ -83,6 +83,24 @@ def dologin(request):
         return redirect('profile', user.pk)
     else:
         return redirect('login')
+    
+@csrf_exempt    
+def buscar(request):
+    pesquisar = request.POST['param']
+    busca = BlogPost.objects.filter(title__icontains=pesquisar)
+    print(busca)
+    print(request.POST['param'])
+    resultado = {'pesquisa':busca}
+    return render(request, 'post.html', resultado)
+
+@csrf_exempt    
+def buscar_chapa(request):
+    pesquisar = request.POST['param']
+    busca = Chapa.objects.filter(estado__icontains=pesquisar)
+    print(busca)
+    print(request.POST['param'])
+    resultado = {'chapa_b':busca}
+    return render(request, 'detalhe.html', resultado)
         
     
     

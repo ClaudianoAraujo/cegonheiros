@@ -16,5 +16,7 @@ urlpatterns = [
     path("login/", views.dologin, name="login"),
     path("formlogin/", views.formlogin, name="formlogin"),
     path("login2/", auth_views.LoginView.as_view(template_name='login.html'), name='login2'),
+    path("buscar/", views.buscar, name="buscar"),
+    path("buscar_chapa/", views.buscar_chapa, name="buscar_chapa"),
     
 ]
