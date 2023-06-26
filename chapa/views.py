@@ -99,7 +99,7 @@ def buscar_chapa(request):
     busca = Chapa.objects.filter(estado__icontains=pesquisar)
     print(busca)
     print(request.POST['param'])
-    resultado = {'chapa_b':busca}
+    resultado = {'chapa_b':busca, 'link':'https://api.whatsapp.com/send?phone=55'}
     return render(request, 'detalhe.html', resultado)
         
     
